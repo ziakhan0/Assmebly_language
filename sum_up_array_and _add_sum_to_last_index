@@ -1,0 +1,9 @@
+[org 0x100]
+mov ax,[arr]
+add ax,[arr+2]
+add ax,[arr+4]
+add ax,[arr+6]
+add ax,[arr+8]
+mov ax,0x4c00
+int 0x21
+arr: dw 1, 2, 3, 4, 5
