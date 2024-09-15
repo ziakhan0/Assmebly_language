@@ -1,0 +1,10 @@
+[org 0x0100]
+mov ax, 1     
+mov bx, 1          
+add bx, ax         ; bx = 1 + 1 = 2
+add [fib+2], bx    ; [fib+2] = [fib+2] + bx (1 + 2 = 3)
+add bx, [fib+2]    ; bx = 2 + [fib+2] (2 + 3 = 5)
+mov ax, 0x4C00    ; Terminate program
+int 0x21
+
+fib: dw 1, 1, 0, 0, 0, 0 ; Fibonacci numbers stored here
