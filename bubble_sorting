@@ -1,0 +1,24 @@
+[org 0x0100]
+jmp start
+data: dw 11,1,2,3,4,5,6,7,8,9
+swap: dw 0
+start:
+mov bx, 0
+l1: mov ax, [data+bx]
+cmp ax, [data+bx+2]
+jbe noswap
+
+mov dx, [data+bx+2]
+mov [data+bx+2], ax
+mov [data+bx], dx
+mov word[swap], 1
+cmp word[swap], 1
+je start
+
+noswap:
+add bx, 2
+cmp bx, 20
+jne l1
+
+mov ax, 0x4c00
+int 0x21
