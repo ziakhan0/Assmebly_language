@@ -1,0 +1,20 @@
+[org 0x0100]
+jmp start
+fibo: dw 0
+start:
+mov ax,0
+mov bx,1
+mov cx, 10
+loop1:
+add bx, ax
+mov dx,ax
+mov ax,bx
+mov bx,dx
+dec cx
+jnz loop1
+
+mov word[fibo], ax
+
+mov ax, 0x4c00
+int 0x21
+
