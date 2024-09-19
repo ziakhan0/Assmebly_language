@@ -1,0 +1,23 @@
+[org 0x0100]
+jmp start
+multiplicand: db 12
+multiplier: db 10
+result: db 0
+
+start:
+mov cl,4
+mov bl,[multiplicand]
+mov dl,[multiplier]
+
+ckbit:
+shr dl,1
+jnc skip
+add byte[result], bl
+
+skip:
+shl bl,1
+dec cl
+jnz ckbit
+
+mov ax, 0x4c00
+int 0x21
